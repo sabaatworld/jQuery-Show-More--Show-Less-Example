@@ -1,0 +1,148 @@
+<html>
+	<head>
+		<title>'Show More' code in action</title>
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script src="show-more-less.js"></script>
+		<style type="text/css">
+			#writingArea {
+				background: #F0F0F0;
+				border-radius: 8px;
+				margin-bottom: 40px;
+				padding: 8px;
+				width: 500px;
+			}
+			
+			#txtContent {
+				width: 90%;
+				height: 300px;
+				margin: 5px;
+			}
+			
+			/* CSS for the feed entry container */
+			.container {
+				width: 500px;
+				padding: 10px;
+				background: yellow;
+				margin: 20px 0;
+			}
+			
+			/* Ensure that the text gets wrapped inside the
+			 pre tag and overflows are hidden */
+			.actualContent {
+				white-space: pre-wrap; /* css-3 */
+				white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+				white-space: -pre-wrap; /* Opera 4-6 */
+				white-space: -o-pre-wrap; /* Opera 7 */
+				word-wrap: break-word;
+				overflow: hidden;
+			}
+			
+			/* Put a limit on the height of the content displayed */
+			.heightLimited {
+				max-height: 500px;
+			}
+			
+			/* Make the span containing Show More appear as a link */
+			.clickable {
+				cursor: pointer;
+				color: red;
+				text-decoration: underline;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="outer">
+			<div id="writingArea">
+				<span>Enter the text you wish to apply:</span>
+				<br/>
+				<textarea id="txtContent">
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+					This is some sample text. This is some sample text. This is some sample text. This is some sample text. 
+				</textarea>
+				<br/>
+				<input type="button" id="btnAdd" value="Add content to feed" />
+			</div>
+			<div id="ajaxResultArea">
+				<h2>Your feed:</h2><br/>
+				<!-- DIVs containing the large content would be added in here using JS.
+					You may use the same logic to get content using AJAX and add it. -->
+				<!-- 
+					Sample Entry:
+				 <div class="container">
+				 	<div class="titleArea">This is the title</div>
+				 	<br/>
+				 	<pre class="actualContent">Some long content text</pre>
+				 	<span class="clickable">Show More</span>
+				 </div>	
+				 -->
+			</div>
+		</div>
+	</body>
+</html>
