@@ -1,6 +1,5 @@
 /**
  * The height in pixels after which the content should be hidden.
- * This value should match the max-height set for CSS of #heightLimited.
  */
 var cutoffHeightInPixels = 500;
 
@@ -32,11 +31,18 @@ $(function() {
 		if(feedEntryHtml.height() > cutoffHeightInPixels || contentText.length > cutoffContentLength) {
 			var showMoreSpan = $('<span class="clickable">Show More</span>');
 			feedEntryHtml.append(showMoreSpan);
-			feedEntryHtml.children('.actualContent').addClass('heightLimited');
+			/* Clone the element and attach it to the body to get it's height */
+			var clonedElement = feedEntryHtml.children('.actualContent').clone()
+				.css({"display":"none","height":"auto","width":"auto"})
+				.appendTo("body");
+			/* This class will act as a check to determine how to change the displayed content */
+			feedEntryHtml.children('.actualContent').addClass('height-limited');
+			feedEntryHtml.children('.actualContent').css('height', cutoffHeightInPixels);
+			/* Save the actual height as an attribute to be retrieved later */
+			feedEntryHtml.children('.actualContent').attr('data-true-height', clonedElement.height());
+			clonedElement.remove();
 		}
-		feedEntryHtml.show();
-		console.log(feedEntryHtml.height() + ":" + pre.height());
-	 //''
+		feedEntryHtml.slideDown();
 	});
 	
 
@@ -50,7 +56,17 @@ $(function() {
 		var currentSpanText = $(this).html();
 		var newSpanText = currentSpanText === 'Show More' ? 'Show Less' : 'Show More';
 		$(this).html(newSpanText);
-		$(this).siblings('.actualContent').toggleClass('heightLimited');
+		var pre = $(this).siblings('.actualContent');
+		if (pre.hasClass('height-limited')) {
+			pre.animate({
+				'height': pre.attr('data-true-height')
+			});
+		} else {
+			pre.animate({
+				'height': cutoffHeightInPixels
+			});
+		}
+		pre.toggleClass('height-limited');
 	});
 	
 });
